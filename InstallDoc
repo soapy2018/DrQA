@@ -13,3 +13,24 @@ It also requires installing PyTorch (version 0.4.0 is not supported yet)，所�
 在装了Anaconda后，
 在线安装：conda install pytorch=0.3.0 -c pytorch
 离线安装：conda install --offline pytorch-cpu-0.3.1-py36_cpu_1.tar.bz2
+
+DrQA安装
+git clone https://github.com/facebookresearch/DrQA.git 
+cd DrQA
+pip install -r requirements.txt 
+python setup.py develop
+
+安装tokenizer
+tokenizer可以有两种选择，一种是斯坦福的CoreNLP，另外一种是Spacy
+下载stanford-corenlp-full-2017-06-09.zip
+解压
+unzip stanford-corenlp-full-2017-06-09.zip
+移动
+mv stanford-corenlp-full-2017-06-09/*.jar /home/soapy/stanfordNLP/
+加入环境变量
+export CLASSPATH=$CLASSPATH:/home/soapy/stanfordNLP/*>> ~/.bashrc
+测试
+from drqa.tokenizers import CoreNLPTokenizer
+tok = CoreNLPTokenizer()
+tok.tokenize('hello world').words()  # Should complete immediately
+如果成功的话这段命令应该几秒内就应该执行完成。
