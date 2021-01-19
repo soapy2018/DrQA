@@ -1,3 +1,5 @@
+安装java
+
 Anaconda安装
 Anaconda是一个用于科学计算的Python发行版，支持Linux, Mac, Windows系统，提供了包管理与环境管理的功能，可以很方便地解决多版本python并存、切换以及各种第三方包安装问题。
 Anaconda利用工具/命令conda来进行package和environment的管理，并且已经包含了Python和相关的配套工具。 安装步骤如下：
@@ -11,7 +13,7 @@ PyTorch安装
 PyTorch一个基于Python的科学计算包，是DrQA的必备计算包。注意！DrQA官网上如此描述：DrQA requires Linux/OSX and Python 3.5 or higher.
 It also requires installing PyTorch (version 0.4.0 is not supported yet)，所以建议安装0.4以下的PyTorch，可以访问https://pytorch.org/ 根据自身相应的配置生成安装命令。
 在装了Anaconda后，
-在线安装：conda install pytorch=0.3.0 -c pytorch
+在线安装：conda install pytorch==1.0.0 torchvision==0.2.1 -c pytorch
 离线安装：conda install --offline pytorch-cpu-0.3.1-py36_cpu_1.tar.bz2
 
 DrQA安装
@@ -26,10 +28,11 @@ tokenizer可以有两种选择，一种是斯坦福的CoreNLP，另外一种是S
 解压
 unzip stanford-corenlp-full-2017-06-09.zip
 移动
-mv stanford-corenlp-full-2017-06-09/*.jar /home/soapy/stanfordNLP/
+mv stanford-corenlp-full-2017-06-09/*.jar stanfordNLP/
 加入环境变量
-export CLASSPATH=$CLASSPATH:/home/soapy/stanfordNLP/*>> ~/.bashrc
+echo 'export CLASSPATH="/home/soapy/program/DRQA/stanfordNLP/*:$CLASSPATH"'>> ~/.bashrc
 测试
+进入python环境
 from drqa.tokenizers import CoreNLPTokenizer
 tok = CoreNLPTokenizer()
 tok.tokenize('hello world').words()  # Should complete immediately
